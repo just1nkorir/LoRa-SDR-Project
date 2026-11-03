@@ -82,7 +82,9 @@ function cfg = default_cfg()
                                                 % log it: RSSI depends on it.
     cfg.sdr.amplitude   = 0.7;                  % peak sample amplitude sent to the
                                                 % USRP (must be <= 1)
-    cfg.sdr.rssiCal_dB  = NaN;                  % RSSI calibration: dBm = dBFS - rxGain + rssiCal_dB
+    cfg.sdr.rssiCal_dB        = NaN;     % RSSI calibration: dBm = dBFS - rxGain + rssiCal_dB
+    cfg.sdr.rxSamplesPerFrame = 40000;   % samples per rx() call (40 ms at 1 MHz)
+    cfg.sdr.captureSeconds    = 12;      % length of one RX capture
     
     cfg = finalize_cfg(cfg);   % compute the derived values (N, fs, Tsym, ...)
 end

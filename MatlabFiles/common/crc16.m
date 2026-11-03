@@ -1,6 +1,6 @@
 function crc = crc16(bytes)
-    poly = hex2dex('1021');
-    crc = hex2dex('FFFF');
+    poly = hex2dec('1021');
+    crc  = hex2dec('FFFF');
     bytes = double(bytes(:).');
 
     for k = 1:numel(bytes)

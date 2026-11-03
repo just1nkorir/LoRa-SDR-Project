@@ -26,7 +26,7 @@ function bytes = nibbles2bytes(nib)
 %   - bitor(a, b)   : bitwise OR, a bit is 1 if it is 1 in a OR in b.
 %   - mod(numel(nib), 2) == 0 checks the count is even (no half bytes).
 
-nib = double(nib(:).');                                   % row, double
-assert(mod(numel(nib), 2) == 0, 'Need an even number of nibbles (got %d)', numel(nib));
-bytes = bitor(bitshift(nib(2:2:end), 4), nib(1:2:end));   % high << 4 | low
+    nib = double(nib(:).');                                   % row, double
+    assert(mod(numel(nib), 2) == 0, 'Need an even number of nibbles (got %d)', numel(nib));
+    bytes = bitor(bitshift(nib(2:2:end), 4), nib(1:2:end));   % high << 4 | low
 end
