@@ -55,7 +55,7 @@ function cfg = default_cfg()
     % ---------------- Receiver options (filled in when writing the RX) ------------
     cfg.rx = struct();
     cfg.rx.lpfCutoff     = 0.55;    % low-pass cutoff as a fraction of BW (+-0.55*BW)
-    cfg.rx.lpfTapsPerOSR = 16;      % filter length = 16*OSR + 1 taps (129 at OSR 8)
+    cfg.rx.lpfTapsPerOSR = 32;      % filter length = 16*OSR + 1 taps (129 at OSR 8)
     cfg.rx.detThresh  = 4;          % window peak/average ratio needed to count as
                                     % "chirp present" (noise alone gives ~3-6)
     cfg.rx.minRun     = 5;          % consecutive preamble windows needed to detect
@@ -78,7 +78,7 @@ function cfg = default_cfg()
                                                 % 100 MHz / 1 MHz = factor 100 (must be
                                                 % a whole number - finalize_cfg checks)
     cfg.sdr.txGain      = 10;                   % dB. Start LOW, increase carefully.
-    cfg.sdr.rxGain      = 30;                   % dB. Keep it FIXED during a session and
+    cfg.sdr.rxGain      = 10;                   % dB. Keep it FIXED during a session and
                                                 % log it: RSSI depends on it.
     cfg.sdr.amplitude   = 0.7;                  % peak sample amplitude sent to the
                                                 % USRP (must be <= 1)

@@ -32,7 +32,7 @@ function main_rx()
     cfg.SF  = 7;
     cfg.BW  = 125e3;
     cfg.CR  = 1;                          % 1 = 4/5 ... 4 = 4/8
-    cfg.sdr.rxGain = 30;                  % dB - keep FIXED for a whole series
+    cfg.sdr.rxGain = 10;                  % dB - keep FIXED for a whole series
     cfg.sdr.captureSeconds = 12;
     useRadio = true;                      % false = dry run from data/tx_dryrun.mat
     
@@ -123,7 +123,7 @@ function [buf, nOver] = capture_dryrun(cfg, dataDir)
            'tx_dryrun.mat was made with different SF/BW/CR than main_rx uses');
     x = double(cell2mat(d.dryFrames(:)));
     x = x(round(0.3 * numel(d.dryFrames{1})) : end);          % start mid-packet, like a real RX
-    cfo = -1870;  snr_dB = -3;                                % made-up but realistic
+    cfo = -90;  snr_dB = 60;                                % made-up but realistic
     x = x .* exp(1j*2*pi*cfo*(0:numel(x)-1).' / cfg.fs);
     nVar = cfg.OSR * cfg.sdr.amplitude^2 / 10^(snr_dB/10);     % noise power over the full 1 MHz
     x = x + sqrt(nVar/2) * (randn(size(x)) + 1j*randn(size(x)));
